@@ -77,14 +77,36 @@ function makeMap(map){
                 game.gamer.x = i;
                 game.gamer.y = j;
             }
-            if(game.clickNum==0 && index==2){
+            if((game.clickNum == 0 && index==2)||(game.clickNum == 0 && index==5)){
                 game.trap.push({
                     x:i,
                     y:j
                 });
             }
-            context.fillStyle=colors[index];
-            context.fillRect(gameMap.boxW*j,gameMap.boxH*i,gameMap.boxW,gameMap.boxH);
+            switch(index){
+                case 0:
+                    grbg();
+                    break;
+                case 1:
+                    qiang();
+                    break;
+                case 2:
+                    drewTrap();
+                    break;
+                case 3:
+                    drewBox();
+                    break;
+                case 4:
+                    drewPlayer();
+                    break;
+                case 5:
+                    drewBox();
+                    break;
+            }
+            var canvasImage = $('#image');
+            context.drawImage(canvasImage,gameMap.boxW*j,gameMap.boxH*i,gameMap.boxW,gameMap.boxH);
+            // context.fillStyle=colors[index];
+            // context.fillRect(gameMap.boxW*j,gameMap.boxH*i,gameMap.boxW,gameMap.boxH);
         }
     }
     if(isgameOver()){
@@ -180,7 +202,7 @@ function examine(p1,p2){
 function isgameOver(){
     gameOver = true;
     for(var i = 0;i<game.trap.length;i++){
-        if(game.mapArray[game.trap[i].x][game.trap[i].y]==2||game.mapArray[game.trap[i].x][game.trap[i].y]==4){
+        if(game.mapArray[game.trap[i].x][game.trap[i].y]==2 || game.mapArray[game.trap[i].x][game.trap[i].y]==4){
             gameOver = false;
         }
     }

@@ -29,8 +29,11 @@
             font-size: 15px;
             line-height: 15px;
         }
-        canvas{
+        #canvas{
             box-shadow: 3px 3px 3px #ccc;
+        }
+        #image{
+            display: none;
         }
         .btn{
             width: 70px;
@@ -47,6 +50,7 @@
     <nav>
         <span>第<span id="leverNum"></span>关走了<span id="clickNum">0</span>步</span>
     </nav>
+    <canvas id="image" width="30" height="30"></canvas>
     <canvas id="canvas" width="480" height="480"></canvas>
     <footer>
         <span class="btn" onclick="game.up()">上一关</span>
@@ -60,6 +64,7 @@
         <button class="left">左</button>
         <button class="right">右</button>
     </div>-->
-    <script src="app.js"></script>
+    <script src="canvas.js"></script>
+    <script src="app.js"></script> 
 </body>
 </html>

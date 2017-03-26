@@ -37,6 +37,7 @@ function PlayGame(){
     this.init = function(){
         if(levels[this.level]){
             this.clickNum = 0;
+            this.trap = [];
             leverNum.innerText = this.level+1;
             clickNum.innerHTML = this.clickNum;
             this.gameMapArray = clone(levels[this.level]);
@@ -76,7 +77,7 @@ function makeMap(map){
                 game.gamer.x = i;
                 game.gamer.y = j;
             }
-            if(index==2){
+            if(game.clickNum==0 && index==2){
                 game.trap.push({
                     x:i,
                     y:j
@@ -86,7 +87,6 @@ function makeMap(map){
             context.fillRect(gameMap.boxW*j,gameMap.boxH*i,gameMap.boxW,gameMap.boxH);
         }
     }
-    
     if(isgameOver()){
         console.log('游戏结束');
         game.level++;
